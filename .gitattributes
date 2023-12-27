@@ -1,0 +1,13 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=input
+
+# maintain linux line endings in shell scripts
+*.sh text eol=lf
+
+# Maintain windows line endings in batch scripts
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Maintain linux line endings for Maven and Gradle wrappers
+mvnw text eol=lf
+gradlew text eol=lf
