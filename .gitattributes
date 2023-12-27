@@ -8,6 +8,9 @@
 *.bat text eol=crlf
 *.cmd text eol=crlf
 
+# Set binary files for jar files.
+*.jar binary
+
 # Maintain linux line endings for Maven and Gradle wrappers
 mvnw text eol=lf
 gradlew text eol=lf
