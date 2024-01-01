@@ -4,6 +4,8 @@ allprojects {
     buildscript {
         configurations.all {
             resolutionStrategy {
+                // commons-compress a transitive dependency of the Gradle spring boot plugin. If that is updated,
+                // review whether we can remove this.
                 force "org.apache.commons:commons-compress:${commonsCompressVersion}"
             }
         }
@@ -13,7 +15,6 @@ allprojects {
     // the dependency tree for regular dependencies with this command: ./gradlew subproject:dependencies
     configurations.all {
         resolutionStrategy {
-            force "org.apache.commons:commons-compress:${commonsCompressVersion}"
         }
     }
 }
