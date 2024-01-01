@@ -1,0 +1,19 @@
+allprojects {
+    // Force dependency versions inside of Gradle build scripts themselves. You can see
+    // the dependency tree for build scripts with this command: ./gradlew subproject:buildEnvironment
+    buildscript {
+        configurations.all {
+            resolutionStrategy {
+                force "org.apache.commons:commons-compress:${commonsCompressVersion}"
+            }
+        }
+    }
+
+    // Force dependency versions for regular project dependencies. You can see
+    // the dependency tree for regular dependencies with this command: ./gradlew subproject:dependencies
+    configurations.all {
+        resolutionStrategy {
+            force "org.apache.commons:commons-compress:${commonsCompressVersion}"
+        }
+    }
+}
