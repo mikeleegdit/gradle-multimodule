@@ -25,3 +25,9 @@ jobs:
 
       - name: Run the usual CI build (dependency-graph will be generated and submitted post-job)
         run: ./gradlew build
+
+      - name: Cache the JAR artifacts
+        uses: actions/cache@v4
+        with:
+          path: '**/build/libs/*.jar'
+          key: 'jar-artifacts'

@@ -21,3 +21,8 @@ dependencies {
 	implementation project(':library')
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
+
+// Spring Boot projects use bootJar instead of jar, and this setting removes an unusable jar file from the project.
+jar {
+    enabled = false
+}

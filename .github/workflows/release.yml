@@ -1,0 +1,15 @@
+name: CI Release
+
+on:
+  workflow_run:
+    workflows: ["CI Build"]
+    types:
+      - completed
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show that I ran
+        run: echo "CI Release was triggered"
