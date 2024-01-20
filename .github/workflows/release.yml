@@ -1,6 +1,8 @@
 name: CI Release
 
 on:
+  workflow_dispatch:
+  # Run after the CI build is done.
   workflow_run:
     workflows: ["CI Build"]
     types:
