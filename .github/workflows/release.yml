@@ -25,7 +25,7 @@ jobs:
       # TODO/TKTK: use dorny/paths-filter to see if certain paths changed - behavior of paths-ignore for a workflow.
 
       - name: Restore the Jar file cache
-        id: jar-cache
+        id: cache-restore
         uses: actions/cache/restore@v4
         with:
           path: '**/build/libs/*.jar'
@@ -34,9 +34,9 @@ jobs:
 
       # NOTE: fail-on-cache-miss does not correctly fail the job. This is a workaround.
       # There is an open bug report for it here: https://github.com/actions/cache/issues/1265
-      - name: (cache-miss) Cache data missing
-        if: steps.jar-cache.outputs.cache-hit != 'true'
-        run: echo "unable to download jar files from previous job" && false
+      - name: Fail the job if there was a cache miss
+        if: steps.cache-restore.outputs.cache-hit != 'true'
+        run: echo "Unable to download cache data from previous job" && false
 
       - name: List out the build directories to check jar files
         run: find . -name *.jar -print
