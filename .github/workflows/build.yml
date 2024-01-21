@@ -32,7 +32,7 @@ jobs:
 
       - name: Cache the JAR artifacts for a release if we are on the main branch.
         uses: actions/cache/save@v4
-        if: github.ref == 'refs/head/main'
+        if: github.ref == 'refs/heads/main'
         with:
           path: '**/build/libs/*.jar'
           # TODO: Add a commit ID to the cache key?
