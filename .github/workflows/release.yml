@@ -2,7 +2,6 @@ name: CI Release
 
 on:
   workflow_dispatch:
-  # Run after the CI build is done.
   workflow_run:
     workflows: ["CI Build"]
     types:
@@ -11,7 +10,23 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/head/main'
+    # strategy:
+    #   matrix:
+    #     module: [application, library]
 
     steps:
-      - name: Show that I ran
-        run: echo "CI Release was triggered"
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # TODO/TKTK: use dorny/paths-filter to see if certain paths changed - behavior of paths-ignore for a workflow.
+
+      - name: Restore the Jar file cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .
+          key: jar-artifacts
+          fail-on-cache-miss: true
+
+      - name: List out the build directories to check jar files
+        run: find . -name *.jar -print
