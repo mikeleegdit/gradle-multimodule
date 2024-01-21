@@ -9,6 +9,7 @@ on:
 
 jobs:
   release:
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     # strategy:
@@ -25,7 +26,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .
-          key: jar-artifacts
+          key: jar-artifacts-${{ github.sha }}
           fail-on-cache-miss: true
 
       - name: List out the build directories to check jar files
