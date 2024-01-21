@@ -25,7 +25,7 @@ jobs:
       - name: Restore the Jar file cache
         uses: actions/cache/restore@v4
         with:
-          path: .
+          path: '**/build/libs/*.jar'
           key: jar-artifacts-${{ github.sha }}
           fail-on-cache-miss: true
 
