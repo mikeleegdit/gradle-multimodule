@@ -12,6 +12,8 @@ jobs:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+    permissions:
+      actions: write
     # strategy:
     #   matrix:
     #     module: [application, library]
