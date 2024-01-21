@@ -27,6 +27,9 @@ jobs:
       - name: Run the usual CI build (dependency-graph will be generated and submitted post-job)
         run: ./gradlew build
 
+      - name: Check the github ref
+        run: echo "Github ref ${{ github.ref }}"
+
       - name: Cache the JAR artifacts for a release if we are on the main branch.
         uses: actions/cache/save@v4
         if: github.ref == 'refs/head/main'
