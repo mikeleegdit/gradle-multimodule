@@ -38,3 +38,8 @@ jobs:
 
       - name: List out the build directories to check jar files
         run: find . -name *.jar -print
+
+      - name: Delete the cache.
+        run: gh cache delete jar-artifacts-${{ github.sha }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
