@@ -9,13 +9,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest("service.message=Hello")
-public class MyServiceTest {
+class MyServiceTest {
 
 	@Autowired
 	private MyService myService;
 
 	@Test
-	public void contextLoads() {
+	void contextLoads() {
 		assertThat(myService.message()).isNotNull();
 	}
 

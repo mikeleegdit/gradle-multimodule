@@ -17,4 +17,15 @@ allprojects {
         resolutionStrategy {
         }
     }
+
+    tasks.register("printAllProjectDependencies", DependencyReportTask) {
+        description 'Prints Out all project dependencies, but does not print out Gradle buildscript dependencies.'
+        group 'Dependency Management'
+    }
+
+    tasks.register("printAllBuildscriptDependencies", DependencyReportTask) {
+        description 'Prints out all dependencies that Gradle uses while building the project, but not the project dependencies themselves.'
+        group 'Dependency Management'
+        configurations = [buildscript.configurations.classpath]
+    }
 }

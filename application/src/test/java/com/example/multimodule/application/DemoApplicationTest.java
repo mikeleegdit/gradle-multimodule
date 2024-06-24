@@ -10,13 +10,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.example.multimodule.service.MyService;
 
 @SpringBootTest
-public class DemoApplicationTest {
+class DemoApplicationTest {
 
 	@Autowired
 	private MyService myService;
 
 	@Test
-	public void contextLoads() {
+	void contextLoads() {
 		assertThat(myService.message()).isNotNull();
 	}
 
