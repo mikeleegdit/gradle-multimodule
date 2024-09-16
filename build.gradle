@@ -29,3 +29,10 @@ allprojects {
         configurations = [buildscript.configurations.classpath]
     }
 }
+
+/**
+ * When we upgrade the Gradle wrapper, make sure to keep the timeout at 5 minutes.
+ */
+ tasks.named('wrapper') {
+    networkTimeout = 300000
+ }
